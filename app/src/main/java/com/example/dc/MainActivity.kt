@@ -77,4 +77,11 @@ class MainActivity : AppCompatActivity() {
         mHistory.clear()
         updateHistory()
     }
+
+    fun onRoll(view: View) {
+
+    }
+    fun onHistory(view: View) {
+
+    }
 }

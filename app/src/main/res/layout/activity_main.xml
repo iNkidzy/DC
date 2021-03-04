@@ -10,7 +10,7 @@
         android:id="@+id/tvHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dicecup Version UNO!"
+        android:text="Dicecup DUO!"
         android:layout_centerHorizontal="true"
         android:textSize="35dp"
         android:textStyle="bold"
@@ -56,20 +56,29 @@
         android:layout_centerHorizontal="true"
         android:onClick="onRoll"
         />
-    <TextureView
+  <!--  <TextureView
         android:id="@+id/tvHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnRoll"
         android:text= "This is history"
         android:layout_centerHorizontal="true"
-      />
+      /> -->
+
     <Button
+        android:id="@+id/btnHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Clear"
+        android:text="History"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:onClick="onClear"
+        android:onClick="onHistory"
         />
+
+    <NumberPicker
+        android:layout_width="match_parent"
+        android:layout_height="147dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="149dp" />
+
 </RelativeLayout>
