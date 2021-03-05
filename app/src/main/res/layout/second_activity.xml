@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.RecyclerView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="vertical"
+    android:id="@+id/SecondView">
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycleView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="4dp"
         android:scrollbars="vertical"
-        android:id="@+id/RecycleView">
+        android:background="@android:color/holo_blue_dark"/>
+
+
 <ListView
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -27,4 +37,6 @@
         android:layout_margin="16dp">
 
     </android.support.design.widget.FloatingActionButton>
-</android.support.v7.widget.RecyclerView>
+
+
+</RelativeLayout>
