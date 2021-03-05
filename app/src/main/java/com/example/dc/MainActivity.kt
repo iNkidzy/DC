@@ -22,7 +22,8 @@ class MainActivity : AppCompatActivity() {
         R.drawable.dice5,
         R.drawable.dice6)
 
-    private val mHistory = mutableListOf<Pair<Int, Int>>()
+    private val mHistory = mutableListOf<Array<Int>>()
+    private val initArray = arrayOf(1,2,3,4,5,6)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,28 +31,100 @@ class MainActivity : AppCompatActivity() {
         btnRoll.setOnClickListener { v -> onRoll() }
         NumberPicker.minValue = 1
         NumberPicker.maxValue = 6
-        NumberPicker.setOnValueChangedListener{picker, oldVal,newVal -> numberOfDice = newVal; addDice()}
+        NumberPicker.setOnValueChangedListener{picker, oldVal,newVal -> numberOfDice = newVal; addDice(initArray)}
         Log.d(TAG, "OnCreate")
 
     }
 
-    fun addDice(){
+    fun addDice(diceResults: Array<Int>){
+        if(numberOfDice == 1){
+            imgDice1.visibility = View.VISIBLE
+            imgDice1.setImageResource(diceImageId[diceResults[0]])
+            imgDice2.visibility = View.INVISIBLE
+            imgDice3.visibility = View.INVISIBLE
+            imgDice4.visibility = View.INVISIBLE
+            imgDice5.visibility = View.INVISIBLE
+            imgDice6.visibility = View.INVISIBLE
+        }
+        if(numberOfDice == 2){
+            imgDice1.visibility = View.VISIBLE
+            imgDice1.setImageResource(diceImageId[diceResults[0]])
+            imgDice2.visibility = View.VISIBLE
+            imgDice2.setImageResource(diceImageId[diceResults[1]])
+            imgDice3.visibility = View.INVISIBLE
+            imgDice4.visibility = View.INVISIBLE
+            imgDice5.visibility = View.INVISIBLE
+            imgDice6.visibility = View.INVISIBLE
+        }
+        if(numberOfDice == 3){
+            imgDice1.visibility = View.VISIBLE
+            imgDice1.setImageResource(diceImageId[diceResults[0]])
+            imgDice2.visibility = View.VISIBLE
+            imgDice2.setImageResource(diceImageId[diceResults[1]])
+            imgDice3.visibility = View.VISIBLE
+            imgDice3.setImageResource(diceImageId[diceResults[2]])
+            imgDice4.visibility = View.INVISIBLE
+            imgDice5.visibility = View.INVISIBLE
+            imgDice6.visibility = View.INVISIBLE
+        }
+        if(numberOfDice == 4){
+            imgDice1.visibility = View.VISIBLE
+            imgDice1.setImageResource(diceImageId[diceResults[0]])
+            imgDice2.visibility = View.VISIBLE
+            imgDice2.setImageResource(diceImageId[diceResults[1]])
+            imgDice3.visibility = View.VISIBLE
+            imgDice3.setImageResource(diceImageId[diceResults[2]])
+            imgDice4.visibility = View.VISIBLE
+            imgDice4.setImageResource(diceImageId[diceResults[3]])
+            imgDice5.visibility = View.INVISIBLE
+            imgDice6.visibility = View.INVISIBLE
+        }
+        if(numberOfDice == 5){
+            imgDice1.visibility = View.VISIBLE
+            imgDice1.setImageResource(diceImageId[diceResults[0]])
+            imgDice2.visibility = View.VISIBLE
+            imgDice2.setImageResource(diceImageId[diceResults[1]])
+            imgDice3.visibility = View.VISIBLE
+            imgDice3.setImageResource(diceImageId[diceResults[2]])
+            imgDice4.visibility = View.VISIBLE
+            imgDice4.setImageResource(diceImageId[diceResults[3]])
+            imgDice5.visibility = View.VISIBLE
+            imgDice5.setImageResource(diceImageId[diceResults[4]])
+            imgDice6.visibility = View.INVISIBLE
+        }
+        if(numberOfDice == 6){
+            imgDice1.visibility = View.VISIBLE
+            imgDice1.setImageResource(diceImageId[diceResults[0]])
+            imgDice2.visibility = View.VISIBLE
+            imgDice2.setImageResource(diceImageId[diceResults[1]])
+            imgDice3.visibility = View.VISIBLE
+            imgDice3.setImageResource(diceImageId[diceResults[2]])
+            imgDice4.visibility = View.VISIBLE
+            imgDice4.setImageResource(diceImageId[diceResults[3]])
+            imgDice5.visibility = View.VISIBLE
+            imgDice5.setImageResource(diceImageId[diceResults[4]])
+            imgDice6.visibility = View.VISIBLE
+            imgDice6.setImageResource(diceImageId[diceResults[5]])
+        }
+
         //first remove all dice
-        var dice = Array(numberOfDice) {i -> mRandomGenerator.nextInt(6) + 1}
-        dice.forEach {
-            var newView: ImageView
-            newView = ImageView(this)
+       // var dice = Array(numberOfDice) {i -> mRandomGenerator.nextInt(6) + 1}
+       // dice.forEach {
+           // var newView: ImageView
+            //newView = ImageView(this)
             //add new imageview to main page
             //set dimensions of dice and somehow make them not collide
-            newView.setImageResource( diceImageId[it])}
+            //newView.setImageResource( diceImageId[it])}
     }
 
     fun onRoll() {
-        //check each die and roll it
+        var dice = Array(numberOfDice) {i -> mRandomGenerator.nextInt(6) + 1}
+        addDice(dice)
+        updateHistory(dice)
     }
 
-    private fun updateHistory() {
-
+    private fun updateHistory(diceResults: Array<Int>) {
+        mHistory.add(diceResults)
     }
     override fun onSaveInstanceState(outState: Bundle){
        super.onSaveInstanceState(outState)
