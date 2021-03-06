@@ -7,6 +7,9 @@ import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 import android.content.Intent
+import android.support.design.widget.Snackbar
+import android.support.v4.view.accessibility.AccessibilityEventCompat.setAction
+import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
     private val TAG: String="xyz"
@@ -31,6 +34,12 @@ class MainActivity : AppCompatActivity() {
         NumberPicker.setValue(6)
         NumberPicker.setOnValueChangedListener{picker, oldVal,newVal -> numberOfDice = newVal; addDice(initArray)}
         Log.d(TAG, "OnCreate")
+
+        val button = findViewById<Button>(R.id.btnHistory)
+        button.setOnClickListener {
+            setContentView(R.layout.second_activity)
+            startActivity()
+        }
     }
 
     fun addDice(diceResults: Array<Int>){
@@ -124,19 +133,28 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun onHistory(view: View) {
-        var translatedList: MutableList<String> = mutableListOf()
-        for (list in mHistory){
-            var s = ""
-            list.forEach {
-                p ->  s += "$p "
+    private fun startActivity(){
+
+        //setContentView(R.layout.second_activity)
+
+        fun onHistory(view: View) {
+            var translatedList: MutableList<String> = mutableListOf()
+            for (list in mHistory){
+                var s = ""
+                list.forEach {
+                    p ->  s += "$p "
+                }
+                translatedList.add(s)
             }
-            translatedList.add(s)
+            translatedList = ArrayList<String>()
+            val intent = Intent(this, HistoryActivity::class.java).apply{
+                putExtra("diceList", translatedList)
+            }
+             startActivity(intent)
         }
-        translatedList = ArrayList<String>()
-        val intent = Intent(this, HistoryActivity::class.java).apply{
-            putExtra("diceList", translatedList)
-        }
-        startActivity(intent)
+
+
+
+
     }
 }
