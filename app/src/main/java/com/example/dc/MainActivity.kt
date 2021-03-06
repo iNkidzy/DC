@@ -7,11 +7,7 @@ import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 import android.content.Intent
-import android.support.v4.view.accessibility.AccessibilityEventCompat.setAction
-import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.ListView
-import kotlinx.android.synthetic.main.second_activity.*
 
 class MainActivity : AppCompatActivity() {
     private val TAG: String="xyz"
@@ -37,12 +33,15 @@ class MainActivity : AppCompatActivity() {
         NumberPicker.setValue(6)
         NumberPicker.setOnValueChangedListener{picker, oldVal,newVal -> numberOfDice = newVal; addDice(initArray)}
         Log.d(TAG, "OnCreate")
+        val clear = intent.getIntExtra("clear", 0)
+        if(clear == 1){
+            mHistory.clear()
+        }
 
         val button = findViewById<Button>(R.id.btnHistory)
         button.setOnClickListener {
             openSecondPage()
         }
-
     }
 
     fun addDice(diceResults: Array<Int>){
@@ -132,11 +131,6 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "History saved")
     }
 
-    fun onClear() {
-
-    }
-
-    
     private fun openSecondPage(){
             var translatedList = ArrayList<String>()
             for (list in mHistory) {
@@ -146,10 +140,9 @@ class MainActivity : AppCompatActivity() {
                 }
                 translatedList.add(s)
             }
-
-            val intent = Intent(this, HistoryActivity::class.java).apply {
-                putExtra("diceList", translatedList)
+                Intent(this, HistoryActivity::class.java).also {
+                it.putStringArrayListExtra("dice", translatedList)
+                startActivity(it)
             }
-            startActivity(intent)
         }
 }
