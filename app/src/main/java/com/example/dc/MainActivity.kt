@@ -7,9 +7,11 @@ import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 import android.content.Intent
-import android.support.design.widget.Snackbar
 import android.support.v4.view.accessibility.AccessibilityEventCompat.setAction
+import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.ListView
+import kotlinx.android.synthetic.main.second_activity.*
 
 class MainActivity : AppCompatActivity() {
     private val TAG: String="xyz"
@@ -25,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     private val mHistory = mutableListOf<Array<Int>>()
     private val initArray = arrayOf(1,2,3,4,5,6)
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -37,9 +40,9 @@ class MainActivity : AppCompatActivity() {
 
         val button = findViewById<Button>(R.id.btnHistory)
         button.setOnClickListener {
-            setContentView(R.layout.second_activity)
-            startActivity()
+            openSecondPage()
         }
+
     }
 
     fun addDice(diceResults: Array<Int>){
@@ -133,28 +136,20 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun startActivity(){
-
-        //setContentView(R.layout.second_activity)
-
-        fun onHistory(view: View) {
-            var translatedList: MutableList<String> = mutableListOf()
-            for (list in mHistory){
+    
+    private fun openSecondPage(){
+            var translatedList = ArrayList<String>()
+            for (list in mHistory) {
                 var s = ""
-                list.forEach {
-                    p ->  s += "$p "
+                list.forEach { p ->
+                    s += "$p "
                 }
                 translatedList.add(s)
             }
-            translatedList = ArrayList<String>()
-            val intent = Intent(this, HistoryActivity::class.java).apply{
+
+            val intent = Intent(this, HistoryActivity::class.java).apply {
                 putExtra("diceList", translatedList)
             }
-             startActivity(intent)
+            startActivity(intent)
         }
-
-
-
-
-    }
 }
