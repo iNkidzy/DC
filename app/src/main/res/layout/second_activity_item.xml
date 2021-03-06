@@ -29,17 +29,42 @@
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/imageView"/>
 
-      <!--  <TextView
-            android:id="@+id/item2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Item 2"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display4"
-            android:textColor="@color/purple_200"
-            android:textSize="15sp"
-            android:layout_bellow="@+id/item1"
-            android:layout_toEndOf="@+id/imageView"
-            android:layout_marginStart="8dp"/> -->
+        <!--  <TextView
+              android:id="@+id/item2"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Item 2"
+              android:textAppearance="@style/TextAppearance.AppCompat.Display4"
+              android:textColor="@color/purple_200"
+              android:textSize="15sp"
+              android:layout_bellow="@+id/item1"
+              android:layout_toEndOf="@+id/imageView"
+              android:layout_marginStart="8dp"/> -->
     </RelativeLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_delete_forever"
+        app:maxImageSize="33dp"
+        android:layout_gravity="end|bottom"
+        android:contentDescription="Clear"
+        android:layout_margin="16dp">
+
+    </android.support.design.widget.FloatingActionButton>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabbtn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_back"
+        app:maxImageSize="30dp"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="200dp"
+        android:layout_margin="16dp"
+        android:contentDescription="Back">
+
+    </android.support.design.widget.FloatingActionButton>
 
 </android.support.v7.widget.CardView>
