@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:scrollbars="vertical"
     android:id="@+id/SecondView">
 
 
-    <android.support.v7.widget.RecyclerView
+  <!--  <android.support.v7.widget.RecyclerView
         android:id="@+id/recycleView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="4dp"
         android:scrollbars="vertical"
         android:background="@color/teal_200"/>
-
+        -->
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <ListView
         android:id="@+id/list"
@@ -27,11 +31,32 @@
         android:gravity="center_vertical"
         android:textSize="16sp"/>
 
-    <include
-        layout="@layout/second_activity_item"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="bottom" />
-
-
 </RelativeLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_delete_forever"
+        app:maxImageSize="33dp"
+        android:layout_gravity="end|bottom"
+        android:contentDescription="Clear"
+        android:layout_margin="16dp">
+
+    </android.support.design.widget.FloatingActionButton>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabbtn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_back"
+        app:maxImageSize="30dp"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="200dp"
+        android:layout_margin="16dp"
+        android:contentDescription="Back">
+
+    </android.support.design.widget.FloatingActionButton>
+
+</FrameLayout>
+
