@@ -12,7 +12,7 @@ import android.widget.Button
 class MainActivity : AppCompatActivity() {
     private val TAG: String="xyz"
     private val mRandomGenerator = Random()
-    private var numberOfDice: Int = 1
+    private var numberOfDice: Int = 6
     private val diceImageId = intArrayOf(0, R.drawable.dice1,
         R.drawable.dice2,
         R.drawable.dice3,
